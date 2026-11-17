@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/api/:ruta*", "destination": "https://api.hatocontrol.example/api/:ruta*" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}

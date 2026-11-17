@@ -1,0 +1,62 @@
+/* Colores e identidad de los mockups de la Fase 5 */
+:root {
+  --noche: #13392b;
+  --hoja: #2f9e52;
+  --lima: #9bcb3c;
+  --maiz: #f2c230;
+  --crema: #f7f5ee;
+  --texto: #1c2b24;
+  --texto-suave: #55635b;
+  --borde: #e3e7e1;
+  --error: #b3261e;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--texto);
+  background: var(--crema);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.cuerpo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: var(--noche);
+  color: #fff;
+}
+
+.encabezado a {
+  color: #dfeee0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.encabezado a.activo {
+  color: var(--maiz);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.pendiente {
+  color: var(--texto-suave);
+}
