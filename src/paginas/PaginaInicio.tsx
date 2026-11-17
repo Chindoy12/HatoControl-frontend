@@ -1,4 +1,4 @@
-// Pantallas P01. Se implementa en la Fase 10: Presentación del sistema con accesos a ingresar o registrar la finca.
+// Pantallas P01. Se implementa en la Fase 10: irAIngreso() e irARegistro().
 export function PaginaInicio() {
   return (
     <>
