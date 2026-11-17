@@ -1,6 +1,6 @@
 import { Encabezado } from '../componentes/Encabezado'
 
-// Pantallas P05, P22. Se implementa en la Fase 10: Saludo, actividades pendientes y accesos a cada módulo según el rol.
+// Pantallas P05, P22. Se implementa en la Fase 10: mostrarAccesos(rol) y mostrarPendientes().
 export function PaginaPanel() {
   return (
     <>

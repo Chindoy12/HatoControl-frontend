@@ -1,6 +1,6 @@
 import { Encabezado } from '../componentes/Encabezado'
 
-// Pantallas P09, P19. Se implementa en la Fase 10: Actividades próximas y pendientes; marcar como realizada.
+// Pantallas P09, P19. Se implementa en la Fase 10: mostrarProximas(dias), mostrarPendientes() y marcarRealizada().
 export function PaginaSanidad() {
   return (
     <>
