@@ -6,12 +6,15 @@ export interface Solicitud {
   cuerpo?: unknown
 }
 
+/** Error que devuelve el backend: mensaje claro y, si aplica, qué corregir en cada campo (RNF03). */
 export class ErrorApi extends Error {
   readonly estado: number
+  readonly campos: Record<string, string>
 
-  constructor(estado: number, mensaje: string) {
+  constructor(estado: number, mensaje: string, campos: Record<string, string> = {}) {
     super(mensaje)
     this.estado = estado
+    this.campos = campos
   }
 }
 
@@ -28,16 +31,24 @@ export async function enviar<T>(solicitud: Solicitud): Promise<T> {
   const csrf = tokenCsrf()
   if (csrf && solicitud.metodo !== 'GET') cabeceras['X-XSRF-TOKEN'] = decodeURIComponent(csrf)
 
-  const respuesta = await fetch(`/api${solicitud.ruta}`, {
-    method: solicitud.metodo,
-    headers: cabeceras,
-    credentials: 'same-origin',
-    body: solicitud.cuerpo === undefined ? undefined : JSON.stringify(solicitud.cuerpo),
-  })
+  let respuesta: Response
+  try {
+    respuesta = await fetch(`/api${solicitud.ruta}`, {
+      method: solicitud.metodo,
+      headers: cabeceras,
+      credentials: 'same-origin',
+      body: solicitud.cuerpo === undefined ? undefined : JSON.stringify(solicitud.cuerpo),
+    })
+  } catch {
+    throw new ErrorApi(0, 'No hay conexión con el servidor. Revisa tu internet e intenta de nuevo.')
+  }
 
   if (!respuesta.ok) {
     const datos = await respuesta.json().catch(() => ({}))
-    throw new ErrorApi(respuesta.status, datos.mensaje ?? 'No se pudo completar la operación.')
+    const mensaje =
+      datos.mensaje ?? (respuesta.status === 403 ? 'La página estuvo abierta mucho tiempo. Recárgala e intenta de nuevo.' : 'No se pudo completar la operación.')
+    throw new ErrorApi(respuesta.status, mensaje, datos.campos ?? {})
   }
-  return respuesta.status === 204 ? (undefined as T) : ((await respuesta.json()) as T)
+  const texto = await respuesta.text()
+  return (texto ? JSON.parse(texto) : undefined) as T
 }
