@@ -17,8 +17,8 @@ export interface LecheRequest { codigoArete: string; fechaParto: string; fecha: 
 
 export interface SesionResponse { nombre: string; rol: Rol; nombreFinca: string }
 export interface UsuarioResponse { nombre: string; correo: string; rol: Rol; activo: boolean }
-export interface AnimalResponse { codigoArete: string; nombre: string; sexo: Sexo; edadMeses: number | null; proposito: Proposito }
-export interface EventoSanitarioResponse { tipo: TipoEventoSanitario; descripcion: string; fechaProgramada: string | null; fechaRealizacion: string | null; estado: EstadoActividad; observaciones: string }
+export interface AnimalResponse { codigoArete: string; nombre: string | null; sexo: Sexo; fechaNacimiento: string | null; edadMeses: number | null; proposito: Proposito }
+export interface EventoSanitarioResponse { id: number; codigoArete: string; nombreAnimal: string | null; tipo: TipoEventoSanitario; descripcion: string; fechaProgramada: string | null; fechaRealizacion: string | null; estado: EstadoActividad; observaciones: string | null }
 export interface PesoResponse { pesoKg: number; fechaMedicion: string; diferenciaKg: number | null }
 export interface PartoResponse { fecha: string; crias: AnimalResponse[] }
 export interface ReporteResponse { tipo: string; fechaGeneracion: string; filas: string[] }
