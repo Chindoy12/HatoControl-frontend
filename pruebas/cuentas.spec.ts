@@ -3,7 +3,7 @@ import { ADMIN, GANADERO, OTRA_FINCA, api, crear, entrar, fincaNueva, mensaje, u
 
 // Criterios de HU_012 (dashboard), HU_014 (reportes) y HU_020 a HU_024 (fincas, cuentas y acceso) en pantalla.
 
-test.describe('Registrar finca (P04)', () => {
+test.describe('Registrar finca (P03)', () => {
   test('HU_020 C1 · Registrar una finca nueva deja al ganadero dentro', async ({ page }) => {
     const correo = `${unico('r').toLowerCase()}@prueba.example`
     await page.goto('/registro')
@@ -60,7 +60,7 @@ test.describe('Registrar finca (P04)', () => {
   })
 })
 
-test.describe('Iniciar y cerrar sesión (P05)', () => {
+test.describe('Iniciar y cerrar sesión (P02)', () => {
   test('HU_021 C1 · Con datos correctos entra a las funciones de su tipo', async ({ page }) => {
     await entrar(page)
     await expect(page.locator('.quien')).toContainText('Ganadero · Finca La Esperanza')
@@ -130,7 +130,7 @@ test.describe('Permisos y fincas (HU_022)', () => {
   })
 })
 
-test.describe('Gestionar administradores (P13)', () => {
+test.describe('Gestionar administradores (P14, P23)', () => {
   test.beforeEach(async ({ page }) => {
     await entrar(page)
     await page.goto('/administradores')
@@ -190,7 +190,7 @@ test.describe('Gestionar administradores (P13)', () => {
   })
 })
 
-test.describe('Recuperar contraseña (P14, P14b)', () => {
+test.describe('Recuperar contraseña (P04)', () => {
   test('HU_024 C1 y C4 · La solicitud responde lo mismo para cualquier correo', async ({ page }) => {
     const textos: string[] = []
     for (const correo of [GANADERO, ADMIN]) {
@@ -221,7 +221,7 @@ test.describe('Recuperar contraseña (P14, P14b)', () => {
   })
 })
 
-test.describe('Dashboard (P12) y reportes (P19)', () => {
+test.describe('Dashboard (P12) y reportes (P13, P24)', () => {
   test('HU_012 C1 · El dashboard muestra el resumen, las actividades y el último peso', async ({ page }) => {
     await entrar(page)
     await page.goto('/dashboard')

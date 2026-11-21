@@ -23,7 +23,7 @@ export function unico(prefijo: string): string {
   return `${prefijo}-${Date.now().toString(36).slice(-5).toUpperCase()}${Math.floor(Math.random() * 90 + 10)}`
 }
 
-/** Ingresa por la pantalla de ingreso (P05) y espera el panel. */
+/** Ingresa por la pantalla de ingreso (P02) y espera el panel principal (P05). */
 export async function entrar(page: Page, correo = GANADERO, clave = CLAVE): Promise<void> {
   await page.goto('/ingresar')
   await page.locator('input[type=email]').fill(correo)

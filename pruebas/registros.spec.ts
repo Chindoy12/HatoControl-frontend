@@ -11,7 +11,7 @@ async function vacaConParto(page: Page, codigo: string, dias: number) {
   await crear(page, '/partos', { codigoAreteMadre: codigo, fecha: hoy(-dias), crias: [] })
 }
 
-test.describe('Peso (P10 Registros diarios)', () => {
+test.describe('Peso (P10)', () => {
   test.beforeEach(async ({ page }) => {
     await entrar(page, ADMIN)
   })
@@ -51,7 +51,7 @@ test.describe('Peso (P10 Registros diarios)', () => {
   })
 })
 
-test.describe('Partos y crías (P11, P08)', () => {
+test.describe('Partos y crías (P11, P20, P08)', () => {
   test('HU_016 C1 y C2 · Parto con una cría; el propósito de la cría depende de su sexo', async ({ page }) => {
     await entrar(page, ADMIN)
     const madre = unico('M')
@@ -114,7 +114,7 @@ test.describe('Partos y crías (P11, P08)', () => {
   })
 })
 
-test.describe('Leche (P10, P08)', () => {
+test.describe('Leche (P10, P21, P08)', () => {
   test('HU_018 C1 · Registrar la leche del día en el parto más reciente', async ({ page }) => {
     await entrar(page, ADMIN)
     const codigo = unico('V')

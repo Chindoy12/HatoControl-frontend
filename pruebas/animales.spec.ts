@@ -171,7 +171,7 @@ test.describe('Página del animal (P08)', () => {
   })
 })
 
-test.describe('Actualizar, eliminar y pasar a engorde (P08, P16)', () => {
+test.describe('Actualizar, eliminar y pasar a engorde (P16, P18)', () => {
   test.beforeEach(async ({ page }) => {
     await entrar(page)
   })
