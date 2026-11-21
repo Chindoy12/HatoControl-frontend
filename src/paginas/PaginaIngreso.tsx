@@ -58,6 +58,8 @@ function Ingreso({ alEntrar }: { alEntrar: (s: SesionResponse) => void }) {
       navegar('/inicio', { replace: true })
     } catch (err) {
       setError(err instanceof ErrorApi ? err.message : 'No se pudo conectar. Intenta de nuevo.')
+      // Diagrama de secuencia 08, último paso: después de un intento fallido se borra la contraseña del formulario.
+      setDatos((d) => ({ ...d, contrasena: '' }))
     } finally {
       setEnviando(false)
     }

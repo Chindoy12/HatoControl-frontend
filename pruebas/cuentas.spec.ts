@@ -74,6 +74,9 @@ test.describe('Iniciar y cerrar sesión (P02)', () => {
     await page.getByRole('button', { name: 'Ingresar', exact: true }).click()
     await expect(mensaje(page, 'err')).toHaveText('El correo o la contraseña no son correctos.')
     await expect(page).toHaveURL(/\/ingresar$/)
+    // Secuencia 08: la contraseña se borra del formulario; el correo se conserva.
+    await expect(page.locator('input[type=password]')).toHaveValue('')
+    await expect(page.locator('input[type=email]')).toHaveValue(GANADERO)
   })
 
   test('HU_021 C3 · Cuenta desactivada', async ({ page, browser }) => {
