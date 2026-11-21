@@ -10,8 +10,10 @@ Cada archivo corresponde a una clase de la vista de desarrollo (Fase 3) o a las 
 src/
 ├── main.tsx, App.tsx            arranque y rutas (direcciones de los mockups P01–P25)
 ├── paginas/                     PaginaInicio, PaginaIngreso, PaginaPanel, PaginaAnimales,
-│                                PaginaAnimal, PaginaSanidad, PaginaDashboard,
-│                                PaginaReportes, PaginaAdministradores
+│   │                            PaginaAnimal, PaginaSanidad, PaginaDashboard,
+│   │                            PaginaReportes, PaginaAdministradores
+│   └── animal/                  secciones de PaginaAnimal: DatosAnimal, TarjetaSanidad,
+│                                TarjetaPeso, TarjetaPartos, TarjetaLeche, DialogosAnimal
 ├── componentes/                 Formulario (elige uno de los 8 tipos), Encabezado (menú común) y
 │   │                            piezas.tsx (apoyo visual: íconos, logo, mensajes, fechas)
 │   └── formularios/             un archivo por tipo (FormularioAnimal, FormularioPeso…);
