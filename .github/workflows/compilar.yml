@@ -17,3 +17,67 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+
+  # Fase 11: pruebas en el navegador contra la base de datos de prueba y el backend publicado como versión de prueba.
+  pruebas-navegador:
+    needs: compilar
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: hatocontrol
+          POSTGRES_USER: hatocontrol
+          POSTGRES_PASSWORD: prueba-ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hatocontrol"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      BD_URL: jdbc:postgresql://localhost:5432/hatocontrol
+      BD_USUARIO: hatocontrol
+      BD_CONTRASENA: prueba-ci
+    steps:
+      - uses: actions/checkout@v4
+      - name: Traer los scripts de la base de datos
+        uses: actions/checkout@v4
+        with:
+          repository: Chindoy12/HatoControl-db
+          path: bd
+      - name: Crear las tablas y cargar los datos de prueba
+        run: >
+          docker run --rm --network host -v "$PWD/bd:/proyecto"
+          flyway/flyway:11
+          -url=$BD_URL -user=$BD_USUARIO -password=$BD_CONTRASENA
+          -locations=filesystem:/proyecto/migraciones,filesystem:/proyecto/datos-prueba
+          migrate
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Descargar y arrancar el backend
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SERVER_SERVLET_SESSION_COOKIE_SECURE: 'false'
+        run: |
+          gh release download prueba -R Chindoy12/HatoControl-backend -p 'hatocontrol-backend-*.jar' -D backend
+          nohup java -jar backend/hatocontrol-backend-*.jar > backend.log 2>&1 &
+          for i in $(seq 1 60); do
+            if [ "$(curl -s -o /dev/null -w '%{http_code}' localhost:8080/api/sesion)" = "401" ]; then echo "Backend listo"; exit 0; fi
+            sleep 2
+          done
+          cat backend.log; exit 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Ejecutar las pruebas en el navegador
+        run: npx playwright test -c pruebas
+      - name: Registro del backend si algo falla
+        if: failure()
+        run: tail -100 backend.log

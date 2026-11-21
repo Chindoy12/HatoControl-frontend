@@ -1,3 +1,4 @@
+import { startTransition } from 'react'
 import { NavLink, useNavigate } from 'react-router'
 import { enviar } from '../servicios/ClienteApi'
 import type { SesionResponse } from '../tipos/dto'
@@ -19,8 +20,12 @@ export function Encabezado({ sesion, alSalir }: { sesion: SesionResponse; alSali
     try {
       await enviar({ metodo: 'POST', ruta: '/sesion/salida' })
     } finally {
-      navegar('/ingresar', { replace: true, state: { salio: true } })
-      alSalir()
+      // El enrutador cambia de pantalla dentro de una transición: la sesión se borra en la misma transición
+      // para que la pantalla de ingreso reciba el aviso «Cerraste sesión» (encontrado en las pruebas de la Fase 11).
+      startTransition(() => {
+        navegar('/ingresar', { replace: true, state: { salio: true } })
+        alSalir()
+      })
     }
   }
 
