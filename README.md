@@ -12,8 +12,11 @@ src/
 ├── paginas/                     PaginaInicio, PaginaIngreso, PaginaPanel, PaginaAnimales,
 │                                PaginaAnimal, PaginaSanidad, PaginaDashboard,
 │                                PaginaReportes, PaginaAdministradores
-├── componentes/                 Formulario (8 tipos), Encabezado (menú común) y
-│                                piezas.tsx (apoyo visual: íconos, logo, mensajes, fechas)
+├── componentes/                 Formulario (elige uno de los 8 tipos), Encabezado (menú común) y
+│   │                            piezas.tsx (apoyo visual: íconos, logo, mensajes, fechas)
+│   └── formularios/             un archivo por tipo (FormularioAnimal, FormularioPeso…);
+│                                useFormulario (validar, mostrar errores, enviar),
+│                                campos.tsx (campos y contador), validaciones.ts
 ├── servicios/ClienteApi.ts      única puerta hacia el backend
 ├── tipos/dto.ts                 tipos de los DTOs del backend
 └── estilos/tema.css             colores de los mockups
