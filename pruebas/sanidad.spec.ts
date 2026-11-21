@@ -3,7 +3,7 @@ import { ADMIN, crear, crearAnimal, entrar, fincaNueva, hoy, legible, mensaje, u
 
 // Criterios de HU_006 a HU_009 que se comprueban en pantalla (P09 Sanidad y P08 página del animal).
 
-test.describe('Control sanitario (P09)', () => {
+test.describe('Control sanitario (P09, P19)', () => {
   test('HU_006 C1 · Registrar una enfermedad realizada muestra la confirmación', async ({ page }) => {
     await entrar(page, ADMIN)
     const codigo = unico('S')
