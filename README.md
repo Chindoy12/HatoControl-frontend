@@ -42,3 +42,23 @@ Requiere el backend en `http://localhost:8080`.
 npm install
 npm run dev
 ```
+
+## Pruebas en el navegador (Fase 11)
+
+La carpeta `pruebas/` tiene las pruebas de Playwright de los criterios de aceptación que se ven en pantalla y de los requisitos no funcionales RNF02, RNF04, RNF05, RNF10 y RNF22. Cada prueba lleva en su nombre la historia y el criterio que comprueba (por ejemplo, `HU_001 C2`).
+
+| Archivo | Qué prueba |
+|---|---|
+| `animales.spec.ts` | HU_001 a HU_005, HU_011, HU_013 y HU_015 |
+| `sanidad.spec.ts` | HU_006 a HU_009 |
+| `registros.spec.ts` | HU_010, HU_016 a HU_019 |
+| `cuentas.spec.ts` | HU_012, HU_014, HU_020 a HU_024 |
+| `requisitos-no-funcionales.spec.ts` | RNF02, RNF04, RNF05, RNF10 y RNF22 |
+
+Para correrlas se necesita el backend en `http://localhost:8080` con la base de datos de prueba recién cargada (HatoControl-db). El servidor de Vite se inicia solo:
+
+```bash
+npm run pruebas
+```
+
+En GitHub Actions, el trabajo `pruebas-navegador` crea la base de datos, descarga el backend de la versión de prueba y corre las pruebas en cada cambio.
