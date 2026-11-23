@@ -9,7 +9,6 @@ interface PropsCampo {
   ayuda?: string
 }
 
-/** Debajo del campo: el error si lo hay; si no, la ayuda. */
 function Ayuda({ error, ayuda }: { error?: string; ayuda?: string }) {
   if (error) return <span className="ayuda err">{error}</span>
   return ayuda ? <span className="ayuda">{ayuda}</span> : null
@@ -29,7 +28,6 @@ export function CampoTexto({ f, campo, etiqueta, ayuda, tipoInput = 'text', max,
   )
 }
 
-/** mostrarContador(): barra de 12 casillas y texto de cuántos caracteres faltan o sobran. */
 export function Contador({ largo }: { largo: number }) {
   const texto = largo < 10 ? `Faltan ${10 - largo} caracteres para el mínimo · ${largo} de 12`
     : largo < 12 ? `Puedes escribir ${12 - largo} caracteres más · ${largo} de 12` : 'Llegaste al máximo de 12 caracteres'
@@ -94,7 +92,6 @@ export function Sexos({ valor, alElegir }: { valor: string; alElegir: (s: Sexo) 
   )
 }
 
-/** Avisos, error general y mensaje de éxito del último envío. */
 export function Resultado({ f }: { f: EstadoFormulario }) {
   return (
     <>
@@ -105,7 +102,6 @@ export function Resultado({ f }: { f: EstadoFormulario }) {
   )
 }
 
-/** Botón de guardar y, si corresponde, Cancelar. */
 export function Botones({ f, texto }: { f: EstadoFormulario; texto: string }) {
   return (
     <div className="acciones">

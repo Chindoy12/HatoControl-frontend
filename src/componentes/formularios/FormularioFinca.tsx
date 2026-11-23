@@ -7,7 +7,6 @@ import type { Errores, PropsFormulario, Valores } from './tipos'
 import { useFormulario } from './useFormulario'
 import { exigir, exigirLongitud } from './validaciones'
 
-/** HU_020: registro de la finca y de la cuenta del ganadero (P03). */
 export function FormularioFinca(props: PropsFormulario) {
   const navegar = useNavigate()
   const f = useFormulario(props, {

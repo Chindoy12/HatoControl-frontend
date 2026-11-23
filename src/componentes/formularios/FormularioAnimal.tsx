@@ -16,7 +16,6 @@ const DESCRIPCION_PROPOSITO: Record<Proposito, string> = {
   PADRON: 'Reproductor de la finca',
 }
 
-/** HU_001 registrar animal y HU_004 editar animal (P06). Con arete en la ruta, edita. */
 export function FormularioAnimal(props: PropsFormulario) {
   const navegar = useNavigate()
   const { codigoArete: areteRuta } = useParams()
@@ -101,7 +100,6 @@ export function FormularioAnimal(props: PropsFormulario) {
   )
 }
 
-/** Las tres opciones de propósito; solo se pueden elegir las que corresponden al sexo. */
 function ElegirProposito({ sexo, valor, error, alElegir }: { sexo: string; valor: string; error?: string; alElegir: (p: Proposito) => void }) {
   const permitidos = propositosDe((sexo || null) as Sexo | null)
   return (

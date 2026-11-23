@@ -3,7 +3,6 @@ import { CartesianGrid, LabelList, Line, LineChart, ResponsiveContainer, Tooltip
 import { Icono, SinRegistros, fecha, numero } from '../../componentes/piezas'
 import type { PesoResponse } from '../../tipos/dto'
 
-/** mostrarPeso(): gráfica de evolución y tabla con la variación de cada medición (HU_010, HU_011). */
 export function TarjetaPeso({ ruta, pesos }: { ruta: string; pesos: PesoResponse[] }) {
   return (
     <div className="card crece">

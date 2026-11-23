@@ -15,10 +15,6 @@ type Seccion = 'resumen' | 'sanidad' | 'peso' | 'partos' | 'leche'
 const SECCIONES: [Seccion, string][] = [['resumen', 'Resumen'], ['sanidad', 'Sanidad'], ['peso', 'Peso']]
 const SECCIONES_HEMBRA: [Seccion, string][] = [['partos', 'Partos y crías'], ['leche', 'Leche']]
 
-/**
- * Pantallas P08, P17 y P18: mostrarDatos(), mostrarSanidad(), mostrarPeso(), mostrarPartosYLeche() y volver().
- * Cada sección es un componente de paginas/animal; aquí quedan los datos, las acciones y la distribución.
- */
 export function PaginaAnimal() {
   const { codigoArete = '' } = useParams()
   const navegar = useNavigate()
@@ -89,7 +85,6 @@ export function PaginaAnimal() {
   const ver = (s: Seccion) => seccion === 'resumen' || seccion === s
   const secciones = hembra ? [...SECCIONES, ...SECCIONES_HEMBRA] : SECCIONES
 
-  /** Eliminar (HU_005) o pasar a engorde (HU_015), después de la confirmación. */
   async function confirmar() {
     const accion = dialogo
     setDialogo(null)

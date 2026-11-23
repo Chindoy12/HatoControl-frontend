@@ -9,7 +9,6 @@ import { useAnimales } from './useAnimales'
 import { useFormulario } from './useFormulario'
 import { exigir } from './validaciones'
 
-/** HU_018: leche del día de una vaca, asociada a uno de sus partos (P07). */
 export function FormularioLeche(props: PropsFormulario) {
   const [consulta] = useSearchParams()
   const vacas = useAnimales().filter((a) => a.sexo === 'HEMBRA' && a.proposito === 'LECHE')

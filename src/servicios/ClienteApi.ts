@@ -6,7 +6,6 @@ export interface Solicitud {
   cuerpo?: unknown
 }
 
-/** Error que devuelve el backend: mensaje claro y, si aplica, qué corregir en cada campo (RNF03). */
 export class ErrorApi extends Error {
   readonly estado: number
   readonly campos: Record<string, string>

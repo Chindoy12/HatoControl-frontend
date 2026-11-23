@@ -7,7 +7,6 @@ import { exigir, exigirLongitud } from './validaciones'
 
 const INICIALES: Valores = { nombre: '', correo: '', contrasena: '' }
 
-/** HU_023: el ganadero crea la cuenta de un administrador (P14). */
 export function FormularioAdministrador(props: PropsFormulario) {
   const f = useFormulario(props, { iniciales: INICIALES, validar: validarAdministrador, guardar })
 

@@ -10,7 +10,6 @@ import { exigir } from './validaciones'
 
 const TIPOS: TipoEventoSanitario[] = ['VACUNA', 'ENFERMEDAD', 'TRATAMIENTO']
 
-/** HU_007 y HU_008: evento sanitario realizado o actividad programada (P09). */
 export function FormularioSanitario(props: PropsFormulario) {
   const [consulta] = useSearchParams()
   const animales = useAnimales()

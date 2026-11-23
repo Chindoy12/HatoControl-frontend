@@ -5,21 +5,13 @@ import type { Proposito, Sexo } from '../../tipos/dto'
 import { propositosDe } from '../piezas'
 import type { Errores, PropsFormulario, Valores } from './tipos'
 
-/** Lo que cada formulario le entrega al comportamiento común. */
 export interface ReglasFormulario {
   iniciales: Valores
-  /** Revisa los campos antes de llamar al backend. */
   validar: (valores: Valores) => Errores
-  /** Llama al backend; si algo falla, lanza ErrorApi. */
   guardar: (valores: Valores) => Promise<void>
-  /** Pantallas públicas (finca, contraseña): sin botón Cancelar. */
   sinCancelar?: boolean
 }
 
-/**
- * Comportamiento que comparten todos los formularios de la vista de desarrollo:
- * validarCampos(), mostrarErrores(mensajes) y enviar(). Las reglas se vuelven a revisar en el backend.
- */
 export function useFormulario({ embebido = false, alGuardar, alCancelar }: PropsFormulario, reglas: ReglasFormulario) {
   const navegar = useNavigate()
   const [valores, setValores] = useState<Valores>(reglas.iniciales)
@@ -76,5 +68,4 @@ export function useFormulario({ embebido = false, alGuardar, alCancelar }: Props
   return { valores, setValores, cambiar, errores, setErrores, general, setGeneral, aviso, exito, setExito, enviando, verClave, setVerClave, cancelar, enviar }
 }
 
-/** Estado y acciones de un formulario, tal como los usan los campos. */
 export type EstadoFormulario = ReturnType<typeof useFormulario>

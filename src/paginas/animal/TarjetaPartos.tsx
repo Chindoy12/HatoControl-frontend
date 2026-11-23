@@ -2,7 +2,6 @@ import { Link } from 'react-router'
 import { Icono, NOMBRE_SEXO, PropositoTag, SinRegistros, fecha } from '../../componentes/piezas'
 import type { PartoResponse } from '../../tipos/dto'
 
-/** mostrarPartosYLeche(), parte 1: partos de la madre con sus crías, del más reciente al más antiguo (HU_017). */
 export function TarjetaPartos({ ruta, partos }: { ruta: string; partos: PartoResponse[] }) {
   return (
     <div className="card crece">

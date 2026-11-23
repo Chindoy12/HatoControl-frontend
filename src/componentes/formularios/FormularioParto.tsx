@@ -11,7 +11,6 @@ import { exigir } from './validaciones'
 
 const CRIA_NUEVA: Cria = { codigoArete: '', nombre: '', sexo: null, proposito: '' }
 
-/** HU_015 y HU_016: parto con sus crías; se puede guardar sin crías (P08). */
 export function FormularioParto(props: PropsFormulario) {
   const [consulta] = useSearchParams()
   const hembras = useAnimales().filter((a) => a.sexo === 'HEMBRA')

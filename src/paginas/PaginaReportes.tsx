@@ -17,7 +17,6 @@ const TEXTOS: Record<string, string> = {
   VACUNA: 'Vacuna', ENFERMEDAD: 'Enfermedad', TRATAMIENTO: 'Tratamiento',
 }
 
-/** Fechas dd/mm/aaaa, nombres en español y números con signo en la variación de peso. */
 function celdaLegible(tipo: Tipo, columna: number, celda: string): string {
   if (!celda) return '—'
   if (/^\d{4}-\d{2}-\d{2}$/.test(celda)) return fecha(celda)

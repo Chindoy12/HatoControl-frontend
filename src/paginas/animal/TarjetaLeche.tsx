@@ -11,7 +11,6 @@ interface Props {
   alElegirPeriodo: (p: Periodo) => void
 }
 
-/** mostrarPartosYLeche(), parte 2: barras por día y promedio del periodo elegido (HU_019). */
 export function TarjetaLeche({ leche, periodo, alElegirPeriodo }: Props) {
   return (
     <div className="card crece">
@@ -53,7 +52,6 @@ function BarrasLeche({ leche, periodo }: { leche: PromedioLecheResponse; periodo
   )
 }
 
-/** Semana: siete casillas de lunes a domingo, con los días sin registro vacíos. Mes y parto: un día por registro. */
 function casillas(leche: PromedioLecheResponse, periodo: Periodo): { dia: string; etiqueta: string; litros: number | null }[] {
   if (periodo !== 'SEMANA') return leche.registros.map((r) => ({ dia: r.fecha, etiqueta: r.fecha.slice(8, 10), litros: r.litros }))
   const [a, m, d] = leche.registros[0].fecha.split('-').map(Number)

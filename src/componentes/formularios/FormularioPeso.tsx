@@ -8,7 +8,6 @@ import { useAnimales } from './useAnimales'
 import { useFormulario } from './useFormulario'
 import { exigir } from './validaciones'
 
-/** HU_011: registrar el peso de un animal (P07). */
 export function FormularioPeso(props: PropsFormulario) {
   const [consulta] = useSearchParams()
   const animales = useAnimales()

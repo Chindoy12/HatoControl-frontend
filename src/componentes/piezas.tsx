@@ -96,7 +96,6 @@ export function Icono({ nombre, color = '#2f9e52', tam = 24 }: { nombre: NombreI
   )
 }
 
-/** Arete estilizado: el logo de HatoControl. */
 export function Marca({ claro = false, tam = 24 }: { claro?: boolean; tam?: number }) {
   const s = tam + 10
   return (
@@ -114,7 +113,6 @@ export function Marca({ claro = false, tam = 24 }: { claro?: boolean; tam?: numb
   )
 }
 
-/** Arcos decorativos del banner (verde y maíz). */
 export function Figuras({ alto, hoja = false }: { alto: number; hoja?: boolean }) {
   return (
     <>
@@ -142,14 +140,12 @@ export function SinRegistros({ children }: { children?: ReactNode }) {
 
 // ---------- formatos ----------
 
-/** "2026-11-17" → "17/11/2026". Las fechas viajan como texto ISO y no se convierten a otra zona horaria. */
 export function fecha(iso: string | null | undefined): string {
   if (!iso) return '—'
   const [a, m, d] = iso.slice(0, 10).split('-')
   return `${d}/${m}/${a}`
 }
 
-/** Hoy en Colombia como texto ISO, igual que el backend. */
 export function hoyIso(): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Bogota' }).format(new Date())
 }
@@ -164,7 +160,6 @@ export const NOMBRE_SEXO: Record<Sexo, string> = { HEMBRA: 'Hembra', MACHO: 'Mac
 export const NOMBRE_TIPO: Record<TipoEventoSanitario, string> = { VACUNA: 'Vacuna', ENFERMEDAD: 'Enfermedad', TRATAMIENTO: 'Tratamiento' }
 export const CLASE_TIPO: Record<TipoEventoSanitario, string> = { VACUNA: 't-v', ENFERMEDAD: 't-r', TRATAMIENTO: 't-b' }
 
-/** Propósitos que admite cada sexo (HU_001). */
 export function propositosDe(sexo: Sexo | null): Proposito[] {
   if (sexo === 'MACHO') return ['ENGORDE', 'PADRON']
   if (sexo === 'HEMBRA') return ['ENGORDE', 'LECHE']
@@ -175,7 +170,6 @@ export function PropositoTag({ p }: { p: Proposito }) {
   return <span className={`tag ${CLASE_PROPOSITO[p]}`}>{NOMBRE_PROPOSITO[p]}</span>
 }
 
-/** Ventana de confirmación (eliminar, pasar a engorde, desactivar). */
 export function Dialogo({ titulo, children, acciones }: { titulo: string; children: ReactNode; acciones: ReactNode }) {
   return (
     <div className="modal" role="dialog" aria-modal="true" aria-label={titulo}>

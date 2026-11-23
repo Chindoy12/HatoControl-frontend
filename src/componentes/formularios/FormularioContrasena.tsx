@@ -8,7 +8,6 @@ import { exigirLongitud } from './validaciones'
 
 const INICIALES: Valores = { contrasena: '', repetir: '' }
 
-/** HU_022, paso 2: nueva contraseña desde el enlace del correo (P04). */
 export function FormularioContrasena(props: PropsFormulario) {
   const { token } = useParams()
   const f = useFormulario(props, { iniciales: INICIALES, validar: validarContrasena, guardar, sinCancelar: true })

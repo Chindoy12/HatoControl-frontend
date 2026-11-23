@@ -14,7 +14,6 @@ import { PaginaSanidad } from './paginas/PaginaSanidad'
 import { enviar } from './servicios/ClienteApi'
 import type { SesionResponse } from './tipos/dto'
 
-/** Lo que reciben las páginas internas: quién está dentro. */
 export function useSesion(): SesionResponse {
   return useOutletContext<SesionResponse>()
 }
@@ -77,7 +76,6 @@ export function App() {
   )
 }
 
-/** Pantallas internas: sin sesión llevan a Ingreso (HU_021). */
 function ConEncabezado({ sesion, alSalir }: { sesion: SesionResponse | null; alSalir: () => void }) {
   if (!sesion) return <Navigate to="/ingresar" replace />
   return (
@@ -88,7 +86,6 @@ function ConEncabezado({ sesion, alSalir }: { sesion: SesionResponse | null; alS
   )
 }
 
-/** El administrador no ve estas opciones; si escribe la dirección, se le explica (HU_022, P25). */
 function SoloGanadero({ sesion, children }: { sesion: SesionResponse | null; children: ReactNode }) {
   if (sesion?.rol === 'GANADERO') return <>{children}</>
   return (

@@ -12,7 +12,6 @@ interface Props {
 
 const FILTROS: (TipoEventoSanitario | null)[] = [null, 'VACUNA', 'ENFERMEDAD', 'TRATAMIENTO']
 
-/** mostrarSanidad(): historial filtrado por tipo y actividades programadas (HU_007, P08). */
 export function TarjetaSanidad({ ruta, historial, programadas, filtroTipo, alFiltrar }: Props) {
   const filtrado = historial.filter((e) => !filtroTipo || e.tipo === filtroTipo)
   return (
@@ -63,7 +62,6 @@ export function TarjetaSanidad({ ruta, historial, programadas, filtroTipo, alFil
   )
 }
 
-/** Una actividad programada; si su fecha ya pasó, se marca como vencida. */
 function FilaProgramada({ evento }: { evento: EventoSanitarioResponse }) {
   const vencida = (evento.fechaProgramada ?? '') < hoyIso()
   return (

@@ -98,7 +98,6 @@ function Ingreso({ alEntrar }: { alEntrar: (s: SesionResponse) => void }) {
   )
 }
 
-/** Paso 1 de HU_024: el mensaje es el mismo exista o no la cuenta. */
 function Recuperar() {
   const [correo, setCorreo] = useState('')
   const [mensaje, setMensaje] = useState('')

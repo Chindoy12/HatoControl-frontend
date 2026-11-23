@@ -10,7 +10,6 @@ interface Props {
   periodo: Periodo
 }
 
-/** mostrarDatos(): nombre, arete, edad y los indicadores del animal (P08). */
 export function DatosAnimal({ animal, pesos, partos, leche, periodo }: Props) {
   const ultimoPeso = pesos.length ? pesos[pesos.length - 1] : null
   const ganancia = pesos.length > 1 ? pesos[pesos.length - 1].pesoKg - pesos[0].pesoKg : null

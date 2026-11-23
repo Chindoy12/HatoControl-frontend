@@ -2,7 +2,6 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { Figuras, Marca } from '../piezas'
 
-/** Banner con el logo para las pantallas sin sesión (P03, P04). */
 export function PaginaPublica({ children }: { children: ReactNode }) {
   return (
     <>

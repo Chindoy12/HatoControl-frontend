@@ -5,7 +5,6 @@ import { ADMIN, crear, crearAnimal, entrar, hoy, legible, mensaje, unico } from 
 
 const tarjeta = (page: Page, titulo: string) => page.locator('.card').filter({ has: page.getByRole('heading', { name: titulo, exact: true }) })
 
-/** Hembra de leche con un parto hace {@code dias} días. */
 async function vacaConParto(page: Page, codigo: string, dias: number) {
   await crearAnimal(page, codigo, 'HEMBRA', 'LECHE', 'Vaca de prueba')
   await crear(page, '/partos', { codigoAreteMadre: codigo, fecha: hoy(-dias), crias: [] })

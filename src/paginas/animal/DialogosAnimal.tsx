@@ -12,7 +12,6 @@ interface Props {
   alCerrarBloqueo: () => void
 }
 
-/** Confirmación antes de eliminar o pasar a engorde (RNF04) y aviso cuando el backend no lo permite (HU_005, HU_015). */
 export function DialogosAnimal({ animal, dialogo, bloqueo, alConfirmar, alCerrar, alCerrarBloqueo }: Props) {
   const nombre = animal.nombre ?? animal.codigoArete
   return (
